@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Window extends JFrame {
-    private boolean isVisible;
+    private boolean isVisible = true;
 
     public Window(String windowName) {
         JPanel writing = new JPanel();

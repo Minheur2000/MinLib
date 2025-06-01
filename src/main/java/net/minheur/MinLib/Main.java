@@ -4,29 +4,35 @@ import net.minheur.MinLib.rendering.Window;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Hello ! MinLib is turned on.");
+        JFrame window = new JFrame("maFrame");
+        window.setSize(400, 300);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-//        Window myTestWindow = new Window("myTest");
-//        myTestWindow.setVisible(true);
+        JButton button = new JButton("Click");
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("hello");
+            }
+        });
+        window.add(button);
 
-        JPanel writing = new JPanel();
-        writing.setBackground(Color.RED);
+        JLabel text = new JLabel("HELLO !!!");
+        window.add(text);
 
-        JLabel mot = new JLabel("test");
-        writing.add(mot);
+        JPanel panel = new JPanel();
+        panel.add(button);
+        panel.add(text);
 
-        JFrame maFrame = new JFrame("ma frame");
+        window.getContentPane().add(panel);
 
-        maFrame.setTitle("hello");
-        maFrame.setSize(680, 680/16*9);
-        maFrame.setLocationRelativeTo(null);
-        maFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        maFrame.setVisible(true);
+        window.setVisible(true);
 
     }
 }
