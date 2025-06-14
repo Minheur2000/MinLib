@@ -1,35 +1,50 @@
 package net.minheur.MinLib.rendering;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Window extends JFrame {
-    private boolean isVisible = true;
+public class Window {
+    public static final JFrame frame = new JFrame();
+    public static final JPanel panel = new JPanel();
 
-    public Window(String windowName) {
-        JPanel writing = new JPanel();
-        writing.setBackground(Color.RED);
+    public static void initializeScreen(String name) {
+        frame.setTitle(name);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
 
+        // JButton button = new JButton("helloo");
+        // frame.add(button);
+        // panel.add(button);
 
-        setTitle(windowName);
-        setSize(680, 680/16*9);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(panel);
 
-        setVisible(isVisible);
-        JLabel mot = new JLabel("TEST");
-        writing.add(mot);
-    }
-
-    public void toggleVisible(boolean newState) {
-        isVisible = newState;
-    }
-
-    public boolean getVisible() {
-        return isVisible;
-    }
-
-    public void addNewLabel(String text) {
+        frame.setVisible(true);
 
     }
+
+    public static void hideScreen() {
+        frame.setVisible(false);
+    }
+    public static void showScreen() {
+        frame.setVisible(true);
+    }
+
+    public static void addButton(String buttonName) {
+        JButton button = new JButton(buttonName);
+        panel.add(button);
+        frame.add(button);
+    }
+    public static void removeButton(int buttonId) {
+        panel.remove(buttonId);
+        frame.remove(buttonId);
+    }
+
+    public static JFrame getFrame() {
+        return frame;
+    }
+    public static JPanel getPanel() {
+        return panel;
+    }
+
 }
